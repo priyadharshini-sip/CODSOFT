@@ -15,7 +15,7 @@ void calc(int a,int b){
         res=a*b;
         
     }
-    if((n=='/')&&(a<b)){
+    if((n=='/')&&(a>b)){
         res=a/b;
     }
 cout<<"The result of the operation "<<a<<" "<<n<<" "<<b<<" is : "<<res;
@@ -26,7 +26,7 @@ int main() {
     int a,b;
     char op='y';
     
-    cout<<"Welcome to an simple calculator";
+    cout<<"Welcome to an simple calculator/n";
     while(op=='y'){
     cout<<"Enter two positive integers: ";
     cin>>a>>b;
