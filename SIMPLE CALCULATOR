@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+void calc(int a,int b){
+    char n;
+    cout<<"Enter an arithmetic operator to perform the operation: ";
+    cin>>n;
+    int res;
+    
+    if(n=='+'){
+        res=a+b;}
+    if(n=='-'){
+        res = a-b;
+    }
+    if(n == '*'){
+        res=a*b;
+        
+    }
+    if((n=='/')&&(a<b)){
+        res=a/b;
+    }
+cout<<"The result of the operation "<<a<<" "<<n<<" "<<b<<" is : "<<res;
+    
+}
+
+int main() {
+    int a,b;
+    char op='y';
+    
+    cout<<"Welcome to an simple calculator";
+    while(op=='y'){
+    cout<<"Enter two positive integers: ";
+    cin>>a>>b;
+    calc(a,b);
+    cout<<"\n";
+    cout<<"whether you need to perform another operation enter small y/n : ";
+        cin>>op;
+    }
+    cout<<"thank you !";
+    
+
+    return 0;
+}
