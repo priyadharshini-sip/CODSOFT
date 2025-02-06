@@ -1,0 +1,86 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class TodoList {
+private:
+    vector<string> tasks;
+
+public:
+    void addTask(const string& task) {
+        tasks.push_back(task);
+        cout << "Task '" << task << "' added!" << endl;
+    }
+
+    void viewTasks() {
+        if (tasks.empty()) {
+            cout << "No tasks in your to-do list." << endl;
+        } else {
+            cout << "Your To-Do List:" << endl;
+            for (size_t i = 0; i < tasks.size(); ++i) {
+                cout << i + 1 << ". " << tasks[i] << endl;
+            }
+        }
+    }
+
+    void deleteTask(int taskNum) {
+        if (taskNum > 0 && taskNum <= tasks.size()) {
+            cout << "Task '" << tasks[taskNum - 1] << "' deleted!" << endl;
+            tasks.erase(tasks.begin() + taskNum - 1);
+        } else {
+            cout << "Invalid task number!" << endl;
+        }
+    }
+};
+
+void displayMenu() {
+    cout << "\nTo-Do List Manager" << endl;
+    cout << "1. Add Task" << endl;
+    cout << "2. View Tasks" << endl;
+    cout << "3. Delete Task" << endl;
+    cout << "4. Exit" << endl;
+}
+
+int main() {
+    TodoList todoList;
+    int choice;
+    string task;
+    int taskNum;
+
+    while (true) {
+        displayMenu();
+        cout << "Enter your choice (1/2/3/4): ";
+        cin >> choice;
+        cin.ignore(); // To ignore the newline character after the choice input
+
+        switch (choice) {
+            case 1:
+                cout << "Enter the task to add: ";
+                getline(cin, task);
+                todoList.addTask(task);
+                break;
+
+            case 2:
+                todoList.viewTasks();
+                break;
+
+            case 3:
+                todoList.viewTasks();
+                cout << "Enter the task number to delete: ";
+                cin >> taskNum;
+                todoList.deleteTask(taskNum);
+                break;
+
+            case 4:
+                cout << "Goodbye!" << endl;
+                return 0;
+
+            default:
+                cout << "Invalid choice, please try again." << endl;
+        }
+    }
+
+    return 0;
+}
